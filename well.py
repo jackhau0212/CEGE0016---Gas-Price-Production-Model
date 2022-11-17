@@ -16,9 +16,9 @@ class Well:
         phase 2: exponential decline function
         '''
         # hyperbolic decline function constants
-        q_1 = 1000
+        q_1 = 537442
         b = 2
-        D_i = 1
+        D_i = 0.1
 
         monthly_production = []
         
@@ -40,9 +40,3 @@ class Well:
             monthly_production.insert(0, 0)
             
         return monthly_production[0:self.end_month+1]
-    
-    
-    
-    
-    
-    
