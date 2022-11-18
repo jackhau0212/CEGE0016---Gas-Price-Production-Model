@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import math
-from joblib import dump
+
 
 class Price:
     def __init__(self):
@@ -11,7 +11,7 @@ class Price:
     
     def get_prediction(self):
         # reading the csv data file
-        historic_gas_data = pd.read_csv("data/gas-prices-day-ahead-converted_unit.csv")
+        historic_gas_data = pd.read_csv("data/data.csv")
 
         historic_gas_data['Month'] = historic_gas_data.index
 
@@ -43,7 +43,7 @@ class Price:
 
 
         for i in range(1, 12*30):
-            price_forecast[i + 1] = price_forecast_deterministic[i] * 1 + (0.1*sigma * 1 * np.random.normal(0,1))
+            price_forecast[i + 1] = price_forecast_deterministic[i] * 1 + (0.5*sigma * 1 * np.random.normal(0,1))
         
         plt.figure(1)
         plt.plot(t, price_forecast)
@@ -71,7 +71,9 @@ class Price:
         plt.title('Gas Price from 2009 to 30 Years from Now')
         plt.ylabel("Gas Price (£/m^3)")
         plt.xlabel("Month")
-        plt.show()    
+        plt.show()
+        
+        
     
         return price_forecast
 
