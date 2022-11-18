@@ -45,10 +45,22 @@ class Price:
         for i in range(1, 12*30):
             price_forecast[i + 1] = price_forecast_deterministic[i] * 1 + (0.5*sigma * 1 * np.random.normal(0,1))
         
+        month =["11/2022", "12/2022"]
+        
+        for i in range(2023,2053):
+            for j in range(1,13):
+                if j < 10:  
+                    month.append("0" + str(j) + "/"  + str(i))
+                else:
+                    month.append(str(j) + "/"  + str(i))
+        
+        print(len(month[:-1]))
+                
         plt.figure(1)
-        plt.plot(t, price_forecast)
+        plt.plot((month[:-1]), price_forecast)
         plt.title('Gas Price Forecast from November 2022')
-        plt.xlabel('Number of Months into the Future')
+        plt.xlabel('Months into the Future')
+        plt.xticks(np.arange(0,len(month[:-1]),36))
         plt.ylabel('Gas Price (£/m^3)')
 
 
@@ -58,7 +70,7 @@ class Price:
         plt.title("Gas Price Pre Russion-Ukraine War")
         plt.legend()
         plt.xlabel('Month')
-        plt.xticks(range(1, 147, 25))
+        plt.xticks(np.arange(0,len(pre_rise_data['Time'].values),20))
         plt.ylabel('Gas Price (£/m^3)')
 
 
@@ -66,11 +78,13 @@ class Price:
         total_gas_price = np.append(historic_gas_data['Price'].values.reshape(
             len(historic_gas_data['Price']), 1), price_forecast)
 
-        plt.plot(np.array([x for x in range(0, 12*30+157+1)]),
-                total_gas_price, color='black')
-        plt.title('Gas Price from 2009 to 30 Years from Now')
+        total_month = np.append( np.array([x[3:] for x in historic_gas_data['Time']]), np.array(month[:-1]))
+
+        plt.plot(total_month, total_gas_price, color='black')
+        plt.title('Gas Price from 2009 to 2052 (30 Years from Present)')
         plt.ylabel("Gas Price (£/m^3)")
         plt.xlabel("Month")
+        plt.xticks(np.arange(0,len(total_month),12*5))
         plt.show()
         
         

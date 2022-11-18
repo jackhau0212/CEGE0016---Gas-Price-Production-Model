@@ -41,12 +41,6 @@ price_forecast = price.get_prediction()
 
 monthly_cash_generation = price_forecast * total_monthly_production
 
-print(f"Price Forecast: {price_forecast}")
-print("/n")
-print(f"Total Production: {total_monthly_production}")
-print("/n")
-print(monthly_cash_generation)
-
 plt.figure(2)
 plt.plot(monthly_cash_generation)
 plt.title("Total Monthly Revenue Generation")
