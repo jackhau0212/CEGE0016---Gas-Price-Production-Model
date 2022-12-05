@@ -54,3 +54,5 @@ plt.title("Total Monthly Revenue Generation")
 plt.xlabel("Month")
 plt.ylabel("Revenue (£)")
 plt.show()
+
+pd.DataFrame(data=monthly_cash_generation).to_csv("data/monthly_cash_generation.csv")
