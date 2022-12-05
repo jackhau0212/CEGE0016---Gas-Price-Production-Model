@@ -89,3 +89,4 @@ class Price:
     
         return price_forecast
 
+
