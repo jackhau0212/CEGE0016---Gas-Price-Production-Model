@@ -27,7 +27,7 @@ total_monthly_production = []
 for i in range(0, number_of_operational_months+1):
     total_monthly_production.append(data[i].sum())
     
-data.to_csv("data/monthly_production.csv")
+#data.to_csv("data/monthly_production.csv")
 
 
 print(f"total production: {sum(total_monthly_production)}")
@@ -42,7 +42,7 @@ plt.show()
 price = Price()
 price_forecast = price.get_prediction()
 
-pd.DataFrame(data=price_forecast).to_csv("data/monthly_price.csv")
+#pd.DataFrame(data=price_forecast).to_csv("data/monthly_price.csv")
 
 ##### Monthly Cash Generation
 
