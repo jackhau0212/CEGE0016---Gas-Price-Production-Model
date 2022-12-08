@@ -35,7 +35,7 @@ class Price:
         available value from the data
         similar to y = mx + c
         '''
-        price_forecast_deterministic = price_model.predict(t) + historic_gas_data['Price'].iat[-1] - price_model.predict(t)[0] - 4
+        price_forecast_deterministic = price_model.predict(t) + historic_gas_data['Price'].iat[-1] - price_model.predict(t)[0]
 
         # Sstochastic differential equation
         price_forecast = np.zeros(12*30+1) + price_forecast_deterministic[0]

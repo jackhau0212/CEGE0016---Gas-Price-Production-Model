@@ -42,7 +42,7 @@ class Well:
         phase 2: exponential decline function
         '''
         # hyperbolic decline function constants
-        q_1 = 1783961
+        q_1 = 2633466.7331
         b = 2
         D_i = 0.1
 
